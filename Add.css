@@ -1,10 +1,19 @@
+form{
+  text-align: center;
+}
+label{
+  margin-right: 50px;
+}
 .Dropdown{
     text-align: center;
-    font-size: medium;
-    margin-top: 10px;
-    padding-top: 20px;
+    margin-top: 0px;
+    padding-top: 10px;
+    margin-bottom: 50px;
 }
-
+.title{
+  font-size: medium;
+  font-weight: bold;
+}
 .all{
     margin-top: 10px;
     padding-top: 10px;
@@ -14,15 +23,46 @@
     font-size: large;
 }
 
-.header{
-    
-    margin-top:  10px;
-    padding-top: 10px;
+h3{
+    margin-top:  50px;
+    padding-top: 50px;
     text-align: center;
-    font-weight: bolder;
+    font-weight: 100;
     font-size: 20px;
-    color: rgb(0, 0, 0);
+    color: rgb(58, 57, 57);
 }
+
+h5{
+  text-align: center;
+  font-size: medium;
+  font-weight: bold;
+  margin-top: 0px;
+  padding-top: 10px;
+}
+input{margin-right: 20px;
+      padding-right: 20px;}
+
+.brewer{
+  font-size: small;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.species{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.origins{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.header{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
 .steps{
 
     text-align: center;

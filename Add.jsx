@@ -1,7 +1,7 @@
 
-import React , { useState }  from "react";
+import React ,  { useState }  from "react";
 import './Add.css';
-import {Container, Button, Form} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 /*
 import Amplify from "aws-amplify";
@@ -53,136 +53,129 @@ function updateFormState(key, value) {                              //update for
 
 function Add() {
   // handle action change
-const handleInputChange = (e, index) => {
-  const { name, value } = e.target;
-  const list = [...stepsList];
-  list[index][name] = value;
-  setInputList(list);
-};
-
-// handle click event of the Remove button
-const handleRemoveClick = index => {
-  const list = [...stepsList];
-  list.splice(index, 1);
-  setInputList(list);
-};
-
-// handle click event of the Add button
-const handleAddClick = () => {
-  setInputList([...stepsList, { stepType: "", description: "", targetValue: "" }]);
-};
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...stepsList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+  
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...stepsList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+  
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...stepsList, { stepType: "", description: "", targetValue: "" }]);
+  };
 
   const [stepsList, setInputList] = useState([{ stepType: "", description: "", targetValue: 5 }]);
 
   return (
-    <Container>
-    <div class = "all">
+    <>
+      <form>
       <h3>Customize Your Recipe</h3>
-      <br/>
-        <Form>
-          <Form.Group>
-            <Form.Label>Name</Form.Label>
-            <Form.Control placeholder="Name" onChange={e => updateFormState('name', e.target.value)} />
-          </Form.Group><br/>
-          <Form.Group>
-            <Form.Label># of Steps</Form.Label>
-            <Form.Control placeholder="# of Steps" onChange={e => updateFormState('numSteps', e.target.value)} />
-          </Form.Group><br/>
-          <Form.Group>
-            <Form.Label>Time</Form.Label>
-            <Form.Control placeholder="time" onChange={e => updateFormState('estimatedTime', e.target.value)} />
-          </Form.Group><br/>
-
+      <div class="all">
+      <label>Name
+        <input type="text" placeholder="Name" onChange={e => updateFormState('name', e.target.value)}/>
+      </label>
+      <label># of steps
+        <input type="text" placeholder="# of steps" onChange={e => updateFormState('numSteps', e.target.value)}/>
+      </label>
+      <label>Time
+        <input type="text" placeholder="time" onChange={e => updateFormState('estimatedTime', e.target.value)}/>
+      </label>
+      </div>
+    
       <div className='Dropdown'>
-      <Form.Group>
-      <Form.Label>Brewer&nbsp;&nbsp;</Form.Label>
-      <select id="Brewer"   onChange={e => updateFormState('brewer', e.target.value)}>
-        <option value="V60">V60</option>
-        <option value="AeroPress">AeroPress</option>
-        <option value="Chemex">Chemex</option>
-        <option value="Moka Pot">Moka Pot</option>
-        <option value="French Press">French Press</option>
-        <option value="Espresso">Espresso</option>
-      </select>
-      </Form.Group><br/>
-
-      <Form.Group>
-      <Form.Label>Species&nbsp;&nbsp;</Form.Label>
-      <select id="Species"   onChange={e => updateFormState('species', e.target.value)}>
-        <option value="Arabica">Arabica</option>
-        <option value="Robusta">Robusta</option>
-        <option value="Liberica">Liberica</option>
-        <option value="Excelsa">Excelsa</option>
-      </select>
-      </Form.Group><br/>
-
-      <Form.Group>
-      <Form.Label>Origins&nbsp;&nbsp;</Form.Label>
-      <select id="Origins"   onChange={e => updateFormState('origin', e.target.value)}>
-        <option value="Colombia">Colombia</option>
-        <option value="Brazil">Brazil</option>
-        <option value="Ecuador">Ecuador</option>
-        <option value="Honduras">Honduras</option>
-      </select>
-      </Form.Group><br/>
-
-      <Form.Group>
-      <Form.Label>Roasts&nbsp;&nbsp;</Form.Label>
-      <select id="Roasts"   onChange={e => updateFormState('roasts', e.target.value)}>
-        <option value="Light">Light</option> 
-        <option value="Medium">Medium</option>
-        <option value="Dark">Dark</option>
-        <option value="Extra Dark">Extra Dark</option>
-      </select>
-      </Form.Group><br/>
-       </div>
-      
-       <div steps>
-         <div class ="header">Steps</div> <br/>
-      {stepsList.map((x, i) => {
-      return (
-        <div className="box">
-          <input
-            className="ml10"
-            name="stepType"
-            placeholder="action or time"
-            value={x.stepType}
-            onChange={e => handleInputChange(e, i)}
-          />
-          <input
-            className="ml10"
-            name="description"
-            placeholder="Description or N/A "
-            size="30"
-            value={x.description}
-            onChange={e => handleInputChange(e, i)}
-          />
-          <input
-            className="ml10"
-            name="targetvalue"
-            placeholder="Time value or Weight Value"
-            size="30"
-            value={x.targetValue}
-            onChange={e => handleInputChange(e, i)}
-          />
-          <div className="btn-box">
-            {stepsList.length !== 1 && <button
-              className="mr10"
-              onClick={() => handleRemoveClick(i)}>Remove</button>}
-            {stepsList.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
+            <div class ="brewer">
+              <h5 >Brewer&nbsp;&nbsp;</h5>
+              <select id="Brewer" onChange={e => updateFormState('brewer', e.target.value)}>
+                <option value="V60">V60</option>
+                <option value="AeroPress">AeroPress</option>
+                <option value="Chemex">Chemex</option>
+                <option value="Moka Pot">Moka Pot</option>
+                <option value="French Press">French Press</option>
+                <option value="Espresso">Espresso</option>
+              </select>
+            <br />
+            </div>
+            
+            <div class ="species">
+              <h5>Species&nbsp;&nbsp;</h5>
+              <select id="Species" onChange={e => updateFormState('species', e.target.value)}>
+                <option value="Arabica">Arabica</option>
+                <option value="Robusta">Robusta</option>
+                <option value="Liberica">Liberica</option>
+                <option value="Excelsa">Excelsa</option>
+              </select>
+            <br />
+            </div>
+            
+            <div class ="origins">
+              <h5>Origins&nbsp;&nbsp;</h5>
+              <select id="Origins" onChange={e => updateFormState('origin', e.target.value)}>
+                <option value="Colombia">Colombia</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Honduras">Honduras</option>
+              </select>
+            <br />
+            </div>
+        
+              <h5>Roasts&nbsp;&nbsp;</h5>
+              <select id="Roasts" onChange={e => updateFormState('roasts', e.target.value)}>
+                <option value="Light">Light</option>
+                <option value="Medium">Medium</option>
+                <option value="Dark">Dark</option>
+                <option value="Extra Dark">Extra Dark</option>
+              </select>
+            <br />
           </div>
-        </div>
-      );
-    })}
-    <br/>
-    </div>    
-       <Button onClick={function(e){ addRecipe(e); formState.steps=stepsList}}>Submit</Button>
-      </Form>
-    </div>
-   </Container>
+          
+          <div steps>
+            <div class="header">Steps</div>
+            {stepsList.map((x, i) => {
+              return (
+                <div className="box">
+                  <input
+                    className="ml10"
+                    name="stepType"
+                    placeholder="action or time"
+                    value={x.stepType}
+                    onChange={e => handleInputChange(e, i)} />
+                  <input
+                    className="ml10"
+                    name="description"
+                    placeholder="Description or N/A "
+                    size="30"
+                    value={x.description}
+                    onChange={e => handleInputChange(e, i)} />
+                  <input
+                    className="ml10"
+                    name="targetvalue"
+                    placeholder="Time value or Weight Value"
+                    size="30"
+                    value={x.targetValue}
+                    onChange={e => handleInputChange(e, i)} />
+                  <div className="btn-box">
+                    {stepsList.length !== 1 && <button
+                      className="mr10"
+                      onClick={() => handleRemoveClick(i)}>Remove</button>}
+                    {stepsList.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
+                  </div>
+                </div>
+              );
+            })}
+            <br />
+          </div>
+          <Button onClick={function (e) { addRecipe(e); formState.steps = stepsList; } }>Submit</Button>
+    </form>
+</>
   );
 }
-
-
 
 export default Add;

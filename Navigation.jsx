@@ -10,9 +10,8 @@ function Navigation() {
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="container">
           <img src="https://i.pinimg.com/564x/cf/71/93/cf7193d757d7231e6dc6834151356ccc.jpg" width="100" height="100" alt="ClearBrew"></img>
-            <div class="header" color="white">
-            ClearBrew
-            </div>
+            <h2 color="white" style={{fontWeight: 'bold'}}> ClearBrew </h2>
+            
             <div>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
@@ -23,7 +22,7 @@ function Navigation() {
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/add">
-                    Add a Recipe&nbsp;
+                    Customize&nbsp;
                   </NavLink>
                 </li>
                 <li className="nav-item">
