@@ -1,0 +1,16 @@
+.Dropdown{
+    text-align: center;
+    font-size: medium;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.all{
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+}
+

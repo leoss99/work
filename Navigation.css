@@ -1,0 +1,27 @@
+.Navigation {
+    text-align: center;
+  }
+  
+  .Navigation-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .Navigation-logo {
+      animation: Navigation-logo-spin infinite 20s linear;
+    }
+  }
+  
+h2{
+    font-size: larger;
+    margin-left: 150px;
+    text-align: center;
+    color: white;
+    
+  }
+
+.header{
+  font-weight: bold;
+  }
+  
