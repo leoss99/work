@@ -72,12 +72,12 @@ function Add() {
     setInputList([...stepsList, { stepType: "", description: "", targetValue: "" }]);
   };
 
-  const [stepsList, setInputList] = useState([{ stepType: "", description: "", targetValue: 5 }]);
+  const [stepsList, setInputList] = useState([{ stepType: "", description: "", targetValue: null }]);
 
   return (
-    <>
+    <body>
       <form>
-      <h3>Customize Your Recipe</h3>
+      <h3><b>Customize Your Recipe</b></h3>
       <div class="all">
       <label>Name
         <input type="text" placeholder="Name" onChange={e => updateFormState('name', e.target.value)}/>
@@ -92,7 +92,7 @@ function Add() {
     
       <div className='Dropdown'>
             <div class ="brewer">
-              <h5 >Brewer&nbsp;&nbsp;</h5>
+              <h5><b>Brewer&nbsp;&nbsp;</b></h5>
               <select id="Brewer" onChange={e => updateFormState('brewer', e.target.value)}>
                 <option value="V60">V60</option>
                 <option value="AeroPress">AeroPress</option>
@@ -105,7 +105,7 @@ function Add() {
             </div>
             
             <div class ="species">
-              <h5>Species&nbsp;&nbsp;</h5>
+              <h5><b>Species&nbsp;&nbsp;</b></h5>
               <select id="Species" onChange={e => updateFormState('species', e.target.value)}>
                 <option value="Arabica">Arabica</option>
                 <option value="Robusta">Robusta</option>
@@ -116,7 +116,7 @@ function Add() {
             </div>
             
             <div class ="origins">
-              <h5>Origins&nbsp;&nbsp;</h5>
+              <h5><b>Origins&nbsp;&nbsp;</b></h5>
               <select id="Origins" onChange={e => updateFormState('origin', e.target.value)}>
                 <option value="Colombia">Colombia</option>
                 <option value="Brazil">Brazil</option>
@@ -126,7 +126,7 @@ function Add() {
             <br />
             </div>
         
-              <h5>Roasts&nbsp;&nbsp;</h5>
+              <h5><b>Roasts&nbsp;&nbsp;</b></h5>
               <select id="Roasts" onChange={e => updateFormState('roasts', e.target.value)}>
                 <option value="Light">Light</option>
                 <option value="Medium">Medium</option>
@@ -144,21 +144,22 @@ function Add() {
                   <input
                     className="ml10"
                     name="stepType"
+                    size="45"
                     placeholder="action or time"
                     value={x.stepType}
-                    onChange={e => handleInputChange(e, i)} />
+                    onChange={e => handleInputChange(e, i)} />&nbsp;&nbsp;
                   <input
                     className="ml10"
                     name="description"
                     placeholder="Description or N/A "
-                    size="30"
+                    size="45"
                     value={x.description}
-                    onChange={e => handleInputChange(e, i)} />
+                    onChange={e => handleInputChange(e, i)} />&nbsp;&nbsp;
                   <input
                     className="ml10"
                     name="targetvalue"
                     placeholder="Time value or Weight Value"
-                    size="30"
+                    size="25"
                     value={x.targetValue}
                     onChange={e => handleInputChange(e, i)} />
                   <div className="btn-box">
@@ -174,7 +175,7 @@ function Add() {
           </div>
           <Button onClick={function (e) { addRecipe(e); formState.steps = stepsList; } }>Submit</Button>
     </form>
-</>
+</body>
   );
 }
 
