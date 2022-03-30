@@ -1,17 +1,9 @@
 .Navigation {
     text-align: center;
+    font-weight: bold;
+    color: aliceblue;
   }
   
-  .Navigation-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .Navigation-logo {
-      animation: Navigation-logo-spin infinite 20s linear;
-    }
-  }
   
 h2{
     font-size: larger;
@@ -21,7 +13,15 @@ h2{
     
   }
 
+.container{
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  }
+
 .header{
   font-weight: bold;
-  }
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
   

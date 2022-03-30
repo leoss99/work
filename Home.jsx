@@ -51,7 +51,9 @@ var recipes = [{
               }
             ]
 
-//const myInit = {};
+function Home() {
+
+  //const myInit = {};
 /*
 API.get(apiName, path, myInit)
   .then(response => {
@@ -70,7 +72,7 @@ API.get(apiName, path, myInit)
  });
 
 */
-function Home() {
+
   return (
     <><div class="User">
       <div class="d-flex flex-column text-center p-3 py-5">

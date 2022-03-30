@@ -1,5 +1,6 @@
+
+import React , { useState }  from "react";
 import './Add.css';
-import React from "react";
 import {Container, Button, Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 /*
@@ -13,9 +14,12 @@ async function addRecipe(event) {                           //send the data to A
   event.preventDefault();
   const data = {
     body: {
+      estimatedTime: formState.estimatedTime,
       name: formState.name,
-      action: formState.action,
-      time: formState.time,
+      numSteps: formState.numSteps,
+      rating: null,
+      recipeID: null,
+      steps: formState.steps,
       brewer: formState.brewer,
       species: formState.species,
       origin: formState.origin,
@@ -32,12 +36,44 @@ async function addRecipe(event) {                           //send the data to A
   alert('Recipe Submitted');
 }
 
-const formState = { name: '', action: '', time: '', brewer: '', species: '', origin: '', roasts: ''}       
+const formState = {
+  estimatedTime: 600,
+  name: "",
+  numSteps: 11,
+  steps: [ { description: "Measure your brew ratio (1:17 coffee:water)", stepType: "action", targetValue: 60  }], 
+  brewer: "",
+  species: "",
+  origin: "",
+  roasts: ""
+}      
+
 function updateFormState(key, value) {                              //update form state
     formState[key] = value;
   }
 
 function Add() {
+  // handle action change
+const handleInputChange = (e, index) => {
+  const { name, value } = e.target;
+  const list = [...stepsList];
+  list[index][name] = value;
+  setInputList(list);
+};
+
+// handle click event of the Remove button
+const handleRemoveClick = index => {
+  const list = [...stepsList];
+  list.splice(index, 1);
+  setInputList(list);
+};
+
+// handle click event of the Add button
+const handleAddClick = () => {
+  setInputList([...stepsList, { stepType: "", description: "", targetValue: "" }]);
+};
+
+  const [stepsList, setInputList] = useState([{ stepType: "", description: "", targetValue: 5 }]);
+
   return (
     <Container>
     <div class = "all">
@@ -49,12 +85,12 @@ function Add() {
             <Form.Control placeholder="Name" onChange={e => updateFormState('name', e.target.value)} />
           </Form.Group><br/>
           <Form.Group>
-            <Form.Label>Action</Form.Label>
-            <Form.Control placeholder="action" onChange={e => updateFormState('action', e.target.value)} />
+            <Form.Label># of Steps</Form.Label>
+            <Form.Control placeholder="# of Steps" onChange={e => updateFormState('numSteps', e.target.value)} />
           </Form.Group><br/>
           <Form.Group>
             <Form.Label>Time</Form.Label>
-            <Form.Control placeholder="time" onChange={e => updateFormState('time', e.target.value)} />
+            <Form.Control placeholder="time" onChange={e => updateFormState('estimatedTime', e.target.value)} />
           </Form.Group><br/>
 
       <div className='Dropdown'>
@@ -100,12 +136,53 @@ function Add() {
       </select>
       </Form.Group><br/>
        </div>
-
-       <Button onClick={e => addRecipe(e)}>Submit</Button>
+      
+       <div steps>
+         <div class ="header">Steps</div> <br/>
+      {stepsList.map((x, i) => {
+      return (
+        <div className="box">
+          <input
+            className="ml10"
+            name="stepType"
+            placeholder="action or time"
+            value={x.stepType}
+            onChange={e => handleInputChange(e, i)}
+          />
+          <input
+            className="ml10"
+            name="description"
+            placeholder="Description or N/A "
+            size="30"
+            value={x.description}
+            onChange={e => handleInputChange(e, i)}
+          />
+          <input
+            className="ml10"
+            name="targetvalue"
+            placeholder="Time value or Weight Value"
+            size="30"
+            value={x.targetValue}
+            onChange={e => handleInputChange(e, i)}
+          />
+          <div className="btn-box">
+            {stepsList.length !== 1 && <button
+              className="mr10"
+              onClick={() => handleRemoveClick(i)}>Remove</button>}
+            {stepsList.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
+          </div>
+        </div>
+      );
+    })}
+    <br/>
+    </div>    
+       <Button onClick={function(e){ addRecipe(e); formState.steps=stepsList}}>Submit</Button>
       </Form>
     </div>
    </Container>
   );
 }
+
+
 
 export default Add;
